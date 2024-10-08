@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  licenseservicediscovery:
+    image: microservice/licenseservicediscovery:0.0.1-SNAPSHOT
+    ports:
+      - "5002:5002"
+    environment:
+      SPRING_PROFILES_ACTIVE: "default"
+      SPRING_CLOUD_CONFIG_URI: http://localhost:8080
+    networks:
+      backend:
+        aliases:
+          - "licensingservicediscovery"
+networks:
+  backend:
+    driver: bridge
